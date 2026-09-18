@@ -16,7 +16,7 @@ jobs:
 
       - name: Extract webhosting.zip
         run: |
-          unzip -o webhosting.zip -d extracted
+          unzip -o project.zip -d extracted
           
           shopt -s dotglob
           cp -r extracted/* .
