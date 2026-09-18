@@ -19,13 +19,16 @@ jobs:
 
       - name: Extract project.zip
         run: |
+          if [ ! -f project.zip ]; then
+            echo "No project.zip found, skipping."
+            exit 0
+          fi
+
           mkdir -p extracted
           unzip -o project.zip -d extracted
 
           shopt -s dotglob nullglob
 
-          # If ZIP contains a single top-level folder,
-          # copy its contents to repository root
           entries=(extracted/*)
 
           if [ ${#entries[@]} -eq 1 ] && [ -d "${entries[0]}" ]; then
@@ -35,6 +38,26 @@ jobs:
           fi
 
           rm -rf extracted
+          rm -f project.zip
+
+      - name: Show extracted files
+        run: |
+          echo "Files after extraction:"
+          find . -maxdepth 3 -type f | sort
+
+      - name: Commit extracted files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+          else
+            git commit -m "Extract project.zip"
+            git push
+          fi          rm -rf extracted
           rm -f project.zip
 
       - name: Show extracted files
