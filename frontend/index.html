@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>SNUKED HOSTER - Premium Hosting</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-content">
+      <div class="logo-pulse">🚀</div>
+      <h2>SNUKED HOSTER</h2>
+      <p>Premium Hosting Panel</p>
+      <div class="loading-bar"><div class="loading-progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Auth Error -->
+  <div id="auth-error" class="auth-error hidden">
+    <div class="auth-error-content">
+      <div class="error-icon">🔒</div>
+      <h3>Authentication Required</h3>
+      <p>Please open this app from Telegram</p>
+      <button class="btn btn-primary" onclick="location.reload()">Retry</button>
+    </div>
+  </div>
+
+  <!-- Main App -->
+  <div id="main-app" class="main-app hidden">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="logo">🚀 SNUKED HOSTER</div>
+        <div class="header-subtitle">Premium Hosting</div>
+      </div>
+      <div class="header-right">
+        <div class="user-avatar" id="user-avatar">👤</div>
+        <div class="user-info" id="header-user-info">
+          <div class="user-name" id="header-user-name">Loading...</div>
+          <div class="user-status">Online</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content Area -->
+    <main class="app-content" id="app-content">
+      <!-- Dynamic content injected here -->
+    </main>
+
+    <!-- Floating Create Button -->
+    <button id="fab-create" class="fab" onclick="navigateTo('create')">
+      <span class="fab-icon">+</span>
+    </button>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" id="bottom-nav">
+      <button class="nav-item active" data-page="home" onclick="navigateTo('home')">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Home</span>
+      </button>
+      <button class="nav-item" data-page="projects" onclick="navigateTo('projects')">
+        <span class="nav-icon">📦</span>
+        <span class="nav-label">Projects</span>
+      </button>
+      <button class="nav-item hidden" data-page="owner" id="nav-owner" onclick="navigateTo('owner')">
+        <span class="nav-icon">👑</span>
+        <span class="nav-label">Owner</span>
+      </button>
+      <button class="nav-item" data-page="activity" onclick="navigateTo('activity')">
+        <span class="nav-icon">📊</span>
+        <span class="nav-label">Activity</span>
+      </button>
+      <button class="nav-item" data-page="settings" onclick="navigateTo('settings')">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">Profile</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Modal Container -->
+  <div id="modal-container" class="modal-container hidden">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-content" id="modal-content">
+      <!-- Modal content -->
+    </div>
+  </div>
+</div>
+
+<script src="js/telegram.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
